@@ -9,17 +9,17 @@ namespace CalculatorTests.Utilities
     {
         public int Compare(object? x, object? y)
         {
-            var lhs = x as ICurrencyUnit;
-            var rhs = y as ICurrencyUnit;
+            var lhs = x as IMoney;
+            var rhs = y as IMoney;
             
             if (lhs == null || rhs == null) throw new InvalidOperationException();
             
             return Compare(lhs, rhs);
         }
 
-        public int Compare(ICurrencyUnit x, ICurrencyUnit y)
+        public int Compare(IMoney x, IMoney y)
         {
-            return (x.Value == y.Value && x.Quantity == y.Quantity)
+            return (x.Denomination == y.Denomination && x.Quantity == y.Quantity)
                 ? 0
                 : -1
                 ;
